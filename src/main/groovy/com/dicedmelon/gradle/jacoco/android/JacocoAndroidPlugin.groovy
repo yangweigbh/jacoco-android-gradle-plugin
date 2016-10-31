@@ -75,8 +75,17 @@ class JacocoAndroidPlugin implements Plugin<ProjectInternal> {
         project.fileTree(dir: classesDir, excludes: project.jacocoAndroidUnitTestReport.excludes)
     reportTask.reports {
       csv.enabled project.jacocoAndroidUnitTestReport.csv.enabled
+      if(project.jacocoAndroidUnitTestReport.html.enabled) {
+        csv.destination project.jacocoAndroidUnitTestReport.csv.destination
+      }
       html.enabled project.jacocoAndroidUnitTestReport.html.enabled
+      if(project.jacocoAndroidUnitTestReport.html.destination) {
+        html.destination project.jacocoAndroidUnitTestReport.html.destination
+      }
       xml.enabled project.jacocoAndroidUnitTestReport.xml.enabled
+      if(project.jacocoAndroidUnitTestReport.xml.destination) {
+          xml.destination project.jacocoAndroidUnitTestReport.xml.destination
+      }
     }
     reportTask
   }
